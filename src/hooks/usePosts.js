@@ -63,6 +63,7 @@ const usePosts = () => {
         deletePost,
         clearAllPosts,
         returnToPrevState,
+        LSPostsKey,
     }
 
 }
