@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Form from "./Form/Form"
 
 
-const Header = () => {
+const Header = ({ postId }) => {
 
   return (
     <>
@@ -15,7 +15,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to="details">Details</NavLink>
+                <NavLink className="nav-link" to={`/post/${postId}`}>PostDetails</NavLink>
               </li>
             </ul>
           </div>

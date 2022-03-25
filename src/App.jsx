@@ -21,8 +21,7 @@ function App() {
           <hr />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/details" element={<PostDetails />} />
-            {/* <Route path="/post/:id" element={<PostDetails />} /> */}
+            <Route path="/post/:postId" element={<PostDetails />} />
           </Routes>
           <Footer />
         </div>
