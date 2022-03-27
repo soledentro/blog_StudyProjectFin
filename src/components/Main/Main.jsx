@@ -1,9 +1,16 @@
+import DeletePosts from "./DeletePosts/DeletePosts";
 import PostsList from "./PostsList/PostsList";
 
 const Main = () => {
 
 
-  return <PostsList />
+  return (
+    <>
+      <PostsList />
+      <DeletePosts />
+    </>
+
+  )
 }
 
 

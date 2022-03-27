@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { PostsListContext } from "../../contexts/PostsListContext";
+import { PostsListContext } from "../../../contexts/PostsListContext";
 
 
-const Footer = () => {
+const DeletePosts = () => {
 
   const { clearAllPosts, returnToPrevState } = useContext(PostsListContext)
 
@@ -17,4 +17,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default DeletePosts
