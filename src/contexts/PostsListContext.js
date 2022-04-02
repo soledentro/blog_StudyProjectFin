@@ -5,10 +5,10 @@ const PostsListContext = createContext()
 
 const PostsListProvider = ({children}) => {
 
-    const {posts, createPost, likedPost, deletePost, clearAllPosts, returnToPrevState} = usePosts()
+    const {posts, createPost, likedPost, deletePost, clearAllPosts, returnToPrevState, LSPostsKey} = usePosts()
    
     return (
-        <PostsListContext.Provider value={{posts, createPost, likedPost, deletePost, clearAllPosts, returnToPrevState}}>
+        <PostsListContext.Provider value={{posts, createPost, likedPost, deletePost, clearAllPosts, returnToPrevState, LSPostsKey}}>
             {
                 children
             }        

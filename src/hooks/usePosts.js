@@ -4,7 +4,10 @@ const LSPostsKey = "posts"
 const history = []
 
 const usePosts = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState(() => {
+        const dataFromLS = localStorage.getItem(LSPostsKey)
+        return JSON.parse(dataFromLS) || []
+      })
 
     const createPost = (title, text, photo, tegs) => {
         const newPost = {
@@ -64,6 +67,7 @@ const usePosts = () => {
         clearAllPosts,
         returnToPrevState,
         LSPostsKey,
+        
     }
 
 }
