@@ -1,6 +1,9 @@
 import { useContext, useState } from "react";
 import { PostsListContext, } from "../../../contexts/PostsListContext";
 import PostsList from "../PostsList/PostsList";
+import { motion } from "framer-motion";
+import { formVariants } from "../postAnimation"
+
 
 const Form = () => {
 
@@ -26,7 +29,7 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler} className="d-flex flex-column align-items-center">
+      <motion.form variants={formVariants} initial="start" animate="end" onSubmit={submitHandler} className="d-flex flex-column align-items-center">
         <div className="mb-3">
           <input type="text"
             value={title}
@@ -71,7 +74,7 @@ const Form = () => {
           className="btn btn-primary">
           Добавить пост
         </button>
-      </form>
+      </motion.form>
       <hr />
       <PostsList />
     </>

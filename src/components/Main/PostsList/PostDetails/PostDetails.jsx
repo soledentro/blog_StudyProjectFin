@@ -1,9 +1,11 @@
-import { useContext, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import ReactTooltip from "react-tooltip"
-import { PostsListContext } from "../../../../contexts/PostsListContext"
-import Modal from "../../../Modal/Modal"
-import ModalInner from "../../../Modal/ModalInner"
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
+import { PostsListContext } from "../../../../contexts/PostsListContext";
+import Modal from "../../../Modal/Modal";
+import ModalInner from "../../../Modal/ModalInner";
+import { motion } from "framer-motion";
+import { cardVariants } from "../../postAnimation"
 
 
 
@@ -27,7 +29,7 @@ const PostDetails = () => {
 
     return (
         <>
-            <div className="container d-flex justify-context-center" style={{ width: '24rem' }}>
+            <motion.div variants={cardVariants} initial="start" animate="end" className="container d-flex justify-context-center" style={{ width: '24rem' }}>
                 <div className="card d-flex justify-context-center" >
                     <img src={postForClient.photo} className="card-img-top" width="auto" height="auto" alt="..." />
                     <div className="card-body outline-y">
@@ -50,18 +52,18 @@ const PostDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             <Modal
                 state={viewModal}
                 onClose={closeModal}
             >
                 <ModalInner
                     editHandler={() => { }}
-                    {...postForClient}
-                // title={postForClient.title}
-                // text={postForClient.text}
-                // photo={postForClient.photo}
-                // tegs={postForClient.tegs}
+                    // {...postForClient}
+                    title={postForClient.title}
+                    text={postForClient.text}
+                    photo={postForClient.photo}
+                    tegs={postForClient.tegs}
                 />
             </Modal>
         </>

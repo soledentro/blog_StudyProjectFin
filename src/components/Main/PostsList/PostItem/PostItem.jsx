@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { PostsListContext } from "../../../../contexts/PostsListContext";
+import { motion } from "framer-motion";
+import { postItemVariants } from "../../postAnimation"
 
 const PostItem = ({ id, title, text, photo, tegs, liked }) => {
 
@@ -11,7 +13,7 @@ const PostItem = ({ id, title, text, photo, tegs, liked }) => {
     const likedHandler = () => likedPost(id)
 
     return (
-        <div className="p-2 flex-fill bd-highlight mb-3" style={{ width: '18rem' }}>
+        <motion.div variants={postItemVariants} className="p-2 flex-fill bd-highlight mb-3" style={{ width: '18rem' }}>
             <img src={photo} className="card-img-top" width="auto" height="auto" alt="..." />
             <div className="card-body outline-y">
                 <h5 className="card-title">{title}</h5>
@@ -27,7 +29,7 @@ const PostItem = ({ id, title, text, photo, tegs, liked }) => {
                     </ReactTooltip>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
