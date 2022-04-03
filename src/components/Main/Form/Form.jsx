@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { PostsListContext, } from "../../../contexts/PostsListContext";
 import PostsList from "../PostsList/PostsList";
 import { motion } from "framer-motion";
-import { formVariants } from "../postAnimation"
+import { inputVariants } from "../postAnimation"
 
 
 const Form = () => {
@@ -29,7 +29,7 @@ const Form = () => {
 
   return (
     <>
-      <motion.form variants={formVariants} initial="start" animate="end" onSubmit={submitHandler} className="d-flex flex-column align-items-center">
+      <motion.form variants={inputVariants} initial="start" animate="end" onSubmit={submitHandler} className="d-flex flex-column align-items-center">
         <div className="mb-3">
           <input type="text"
             value={title}

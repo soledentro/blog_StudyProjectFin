@@ -43,7 +43,7 @@ export const postItemVariants = {
     },
 }
 
-export const formVariants = {
+export const inputVariants = {
     start: {
       opasity: 0,
       x: -700,
