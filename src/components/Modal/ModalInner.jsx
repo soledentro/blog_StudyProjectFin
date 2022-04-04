@@ -6,9 +6,6 @@ import { motion } from "framer-motion"
 import { wrModalAnimate, innerModalVariants } from "./modalAnimation"
 
 const ModalInner = ({ onSubmit, onClose, title = '', text = '', photo = '', tegs = '' }) => {
-    console.log(title, text, photo, tegs)
-    // console.log(postForClient)
-    // title = '', text = '', photo = '', tegs = ''
 
     const [header, setHeader] = useState(title)
     const [words, setWords] = useState(text)
