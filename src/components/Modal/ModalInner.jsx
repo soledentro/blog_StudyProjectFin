@@ -3,11 +3,7 @@ import { useParams } from "react-router-dom"
 import { PostsListContext } from "../../contexts/PostsListContext"
 import styles from "./modal.module.css"
 
-const ModalInner = ({ onSubmit, onClose, title, text, photo, tegs, ...postForClient }) => {
-    console.log(title, text, photo, tegs)
-    console.log(postForClient)
-    // title = '', text = '', photo = '', tegs = ''
-
+const ModalInner = ({ onSubmit, onClose, title = '', text = '', photo = '', tegs = '' }) => {
     const [header, setHeader] = useState(title)
     const [words, setWords] = useState(text)
     const [img, setImg] = useState(photo)
@@ -57,8 +53,12 @@ const ModalInner = ({ onSubmit, onClose, title, text, photo, tegs, ...postForCli
 
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.inner}>
+        <div onClick={closeClickHandler} className={styles.wrapper}>
+            <div onClick={innerClickHandler} className={styles.inner}>
+                <svg onClick={closeClickHandler} role="button" className={`bi bi-x-lg ${styles.close}`} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                    <path fillRule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                </svg>
                 <form onSubmit={editHandler} className="d-flex flex-column align-items-center">
                     <div className="mb-3">
                         <input type="text"

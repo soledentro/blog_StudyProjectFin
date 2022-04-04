@@ -1,11 +1,8 @@
-import { useContext, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import ReactTooltip from "react-tooltip"
-import { PostsListContext } from "../../../../contexts/PostsListContext"
-import Modal from "../../../Modal/Modal"
-import ModalInner from "../../../Modal/ModalInner"
-
-
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
+import { PostsListContext } from "../../../../contexts/PostsListContext";
+import Modal from "../../../Modal/Modal";
 
 const PostDetails = () => {
 
@@ -54,15 +51,10 @@ const PostDetails = () => {
             <Modal
                 state={viewModal}
                 onClose={closeModal}
+
+                editHandler={() => { }}
+                {...postForClient}
             >
-                <ModalInner
-                    editHandler={() => { }}
-                    {...postForClient}
-                // title={postForClient.title}
-                // text={postForClient.text}
-                // photo={postForClient.photo}
-                // tegs={postForClient.tegs}
-                />
             </Modal>
         </>
     )
