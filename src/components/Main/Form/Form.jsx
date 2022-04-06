@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
-import { PostsListContext, } from "../../../contexts/PostsListContext";
+import { useState } from "react";
 import PostsList from "../PostsList/PostsList";
 import { motion } from "framer-motion";
 import { inputVariants } from "../postAnimation"
+import { useDispatch } from "react-redux";
+import { addPost } from "../../../redux/actionCreators/postsAC";
 
 
 const Form = () => {
@@ -11,13 +12,14 @@ const Form = () => {
   const [text, setText] = useState("")
   const [photo, setPhoto] = useState("")
   const [tegs, setTegs] = useState("")
-  const { createPost } = useContext(PostsListContext)
+
+  const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
 
     if (text.length <= 1000 && title.trim() && text.trim() && photo.trim() && tegs.trim()) {
-      createPost(title, text, photo, tegs)
+      dispatch(addPost(title, text, photo, tegs))
       setTitle("")
       setText("")
       setPhoto("")

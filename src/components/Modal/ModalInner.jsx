@@ -1,25 +1,22 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { PostsListContext } from "../../contexts/PostsListContext"
 import styles from "./modal.module.css"
 import { motion } from "framer-motion"
 import { wrModalAnimate, innerModalVariants } from "./modalAnimation"
+import { useSelector } from "react-redux"
+import { LOCAL_STORAGE_KEY } from "../../redux/state"
 
 const ModalInner = ({ onSubmit, onClose, title = '', text = '', photo = '', tegs = '' }) => {
-    console.log(title, text, photo, tegs)
-    // console.log(postForClient)
-    // title = '', text = '', photo = '', tegs = ''
-
     const [header, setHeader] = useState(title)
     const [words, setWords] = useState(text)
     const [img, setImg] = useState(photo)
     const [tag, setTag] = useState(tegs)
-    const { id } = useParams()
-    const { posts } = useContext(PostsListContext)
-    const { LSPostsKey } = useContext(PostsListContext)
+
+    const { postId } = useParams()
+    const posts = useSelector(store => store.posts)
 
 
-    const postForEdit = posts.findIndex((post) => post.id === +id)
+    const postForEdit = posts.findIndex((post) => post.id === +postId)
     posts[postForEdit].title = header
     posts[postForEdit].text = words
     posts[postForEdit].photo = img
@@ -40,7 +37,7 @@ const ModalInner = ({ onSubmit, onClose, title = '', text = '', photo = '', tegs
             setTag(tag)
         }
 
-        localStorage.setItem(LSPostsKey, JSON.stringify(posts))
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts))
         onClose()
     }
 

@@ -1,21 +1,20 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { PostsListContext } from "../../../../contexts/PostsListContext";
 import Modal from "../../../Modal/Modal";
-import ModalInner from "../../../Modal/ModalInner";
 import { motion } from "framer-motion";
 import { cardVariants } from "../../postAnimation"
+import { useSelector } from "react-redux";
 
 
 
 const PostDetails = () => {
 
-    const { posts } = useContext(PostsListContext)
-    const { id } = useParams()
+    const posts = useSelector(store => store.posts)
+    const { postId } = useParams()
     const navigate = useNavigate()
 
-    const postForClient = posts.find((post) => post.id === +id)
+    const postForClient = posts.find((post) => post.id === +postId)
 
     const [viewModal, setViewModal] = useState(false)
 
@@ -56,15 +55,9 @@ const PostDetails = () => {
             <Modal
                 state={viewModal}
                 onClose={closeModal}
+                editHandler={() => { }}
+                {...postForClient}
             >
-                <ModalInner
-                    editHandler={() => { }}
-                    // {...postForClient}
-                    title={postForClient.title}
-                    text={postForClient.text}
-                    photo={postForClient.photo}
-                    tegs={postForClient.tegs}
-                />
             </Modal>
         </>
     )

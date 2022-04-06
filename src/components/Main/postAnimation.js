@@ -29,14 +29,10 @@ export const postListVariants = {
 
 export const postItemVariants = {
     start: {
-        scale: 0,
         opacity: 0,
-        zIndex: -1,
     },
     end: {
-        scale: 1,
         opacity: 1,
-        zIndex: 1,
         transition: {
             duration: 0.5,
         },

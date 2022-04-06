@@ -1,16 +1,16 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import { PostsListContext } from "../../../../contexts/PostsListContext";
 import { motion } from "framer-motion";
 import { postItemVariants } from "../../postAnimation"
+import { useDispatch } from "react-redux";
+import { deletePost, likedPost } from "../../../../redux/actionCreators/postsAC"
 
 const PostItem = ({ id, title, text, photo, tegs, liked }) => {
 
-    const { likedPost, deletePost } = useContext(PostsListContext)
+    const dispatch = useDispatch()
 
-    const deleteHandler = () => deletePost(id)
-    const likedHandler = () => likedPost(id)
+    const deleteHandler = () => dispatch(deletePost(id))
+    const likedHandler = () => dispatch(likedPost(id))
 
     return (
         <motion.div variants={postItemVariants} className="p-2 flex-fill bd-highlight mb-3" style={{ width: '18rem' }}>
